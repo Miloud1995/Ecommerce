@@ -1,116 +1,69 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <title>Dashboard | Hyper - Responsive Bootstrap 5 Admin Dashboard</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description">
-    <meta content="Coderthemes" name="author">
-    <!-- App favicon -->
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
-
-    <!-- third party css -->
-    <link href="Admin/assets/css/vendor/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css">
-    <!-- third party css end -->
-
-    <!-- App css -->
-    <link href="Admin/assets/css/icons.min.css" rel="stylesheet" type="text/css">
-    <link href="Admin/assets/css/app.min.css" rel="stylesheet" type="text/css" id="light-style">
-    <link href="Admin/assets/css/app-dark.min.css" rel="stylesheet" type="text/css" id="dark-style">
-
-</head>
-
-<style>
-    .div_category {
-        padding-top: 40px;
-        text-align: center
-    }
-
-    .category_title {
-        font-size: 40px;
-        padding-top: 40px
-    }
-</style>
-
-<body class="loading"
-    data-layout-config='{"leftSideBarTheme":"dark","layoutBoxed":false, "leftSidebarCondensed":false, "leftSidebarScrollable":false,"darkMode":false, "showRightSidebarOnStart": true}'>
-    <!-- Begin page -->
-    <div class="wrapper">
-        <!-- ========== Left Sidebar Start ========== -->
-        <div class="leftside-menu">
-
-            <!-- LOGO -->
-            @include('admin.Logo');
-            <div class="h-100" id="leftside-menu-container" data-simplebar="">
-
-                <!--- Sidemenu -->
-                @include('admin.SideBar')
-
-                <!-- Help Box -->
-                @include('admin.HelpBox')
-                <!-- end Help Box -->
-                <!-- End Sidebar -->
-
-                <div class="clearfix"></div>
-
-            </div>
-            <!-- Sidebar -left -->
+@extends('admin.pages.layout')
+@section('content')
+    @if (session()->has('message'))
+        <div class="alert alert-success" style="margin-top: 30px ;text-align: center;margin-left:50px">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x </button>
+            {{ session()->get('message') }}
 
         </div>
-        <!-- Left Sidebar End -->
-        @include('admin.NavBar')
-        <!-- ============================================================== -->
-        <!-- Start Page Content here -->
-        <!-- ============================================================== -->
-        <div class="content-page">
-            <div class="content">
-                @if (session()->has('message'))
-                    <div class="alert alert-success" style="margin-top: 30px ;text-align: center;margin-left:50px">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x </button>
-                        {{ session()->get('message') }}
+    @endif
 
-                    </div>
-                @endif
-                <div class="div_category">
-                    <h2 class="category_title">Category</h2>
-                    <form action="{{ url('/add_category') }}" method="POST">
-                        @csrf
-                        <input type="text" style="color: gray" name="category_name"
-                            placeholder="Write Category Name" />
-                        <input type="submit" name="submit" class="btn btn-primary" style="color: gray"
-                            value="Add Category" />
-                    </form>
-                </div>
-            </div>
+    @if (session()->has('error'))
+        <div class="alert alert-danger" style="margin-top: 30px ;text-align: center;margin-left:50px">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x </button>
+            {{ session()->get('message') }}
+
         </div>
-        <!-- ============================================================== -->
-        <!-- End Page content -->
+    @endif
 
-        <!-- ============================================================== -->
-        @include('admin.Footer')
 
+    <div class="div_category">
+        <h2 class="category_title te ">Category</h2>
+        <form action="{{ url('/add_category') }}" method="POST" class="form_des">
+            @csrf
+            <input type="text" style="color: gray" name="category_name" placeholder="Write Category Name" />
+            <input type="submit" name="submit" class="btn btn-primary" style="color: gray;" value="Add Category" />
+        </form>
+
+        <div>
+            <table class="table table-dark" style="margin-top: 40px">
+                <thead>
+                    <tr>
+
+                        <th scope="col">Category Name</th>
+                        <th scope="col">Operatios</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($alldata as $category)
+                        <tr>
+
+                            <td>{{ $category->category_name }}</td>
+                            <td style="display: flex;justify-content: center;align-items: center;gap:20px">
+                                <form action="{{ route('delete_category', $category->id) }}" method="POST">
+                                    @csrf
+                                    <button type="submit"
+                                        onclick="return confirm('are you syre you want to delete this category')"
+                                        class="btn btn-danger">Delete</button>
+                                </form>
+
+
+
+                                <form
+                                    action="{{ route('edit_category', ['category_name' => $category->category_name, 'id' => $category->id]) }}"
+                                    method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn btn-success" style="width: 75px">Edit</button>
+                                </form>
+
+                            </td>
+
+                        </tr>
+                    @endforeach
+
+                </tbody>
+            </table>
+        </div>
     </div>
-    <!-- END wrapper -->
-
-    <!-- Right Sidebar -->
-    @include('admin.EndBar')
-    <div class="rightbar-overlay"></div>
-    <!-- /End-bar -->
-
-    <!-- bundle -->
-    <script src="Admin/assets/js/vendor.min.js"></script>
-    <script src="Admin/assets/js/app.min.js"></script>
-
-    <!-- third party js -->
-    <script src="Admin/assets/js/vendor/apexcharts.min.js"></script>
-    <script src="Admin/assets/js/vendor/jquery-jvectormap-1.2.2.min.js"></script>
-    <script src="Admin/assets/js/vendor/jquery-jvectormap-world-mill-en.js"></script>
-    <!-- third party js ends -->
-
-    <!-- demo app -->
-    <script src="Admin/assets/js/pages/demo.dashboard.js"></script>
-    <!-- end demo js-->
-</body>
-
-</html>
+@endsection

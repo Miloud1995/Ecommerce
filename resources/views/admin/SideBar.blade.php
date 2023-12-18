@@ -21,7 +21,7 @@
                     <a href="index.html">Ecommerce</a>
                 </li>
                 <li>
-                    <a href="dashboard-projects.html">Projects</a>
+                    <a href="dashboard-projects.html">Product</a>
                 </li>
             </ul>
         </div>
@@ -47,35 +47,18 @@
         <a data-bs-toggle="collapse" href="#sidebarEcommerce" aria-expanded="false" aria-controls="sidebarEcommerce"
             class="side-nav-link">
             <i class="uil-store"></i>
-            <span> Ecommerce </span>
+            <span> Products </span>
             <span class="menu-arrow"></span>
         </a>
         <div class="collapse" id="sidebarEcommerce">
             <ul class="side-nav-second-level">
                 <li>
-                    <a href="apps-ecommerce-products.html">Products</a>
+                    <a href="{{ route('show_product') }}">Show Products</a>
                 </li>
                 <li>
-                    <a href="apps-ecommerce-products-details.html">Products Details</a>
+                    <a href="{{ route('add_product') }}">Add Product</a>
                 </li>
-                <li>
-                    <a href="apps-ecommerce-orders.html">Orders</a>
-                </li>
-                <li>
-                    <a href="apps-ecommerce-orders-details.html">Order Details</a>
-                </li>
-                <li>
-                    <a href="apps-ecommerce-customers.html">Customers</a>
-                </li>
-                <li>
-                    <a href="apps-ecommerce-shopping-cart.html">Shopping Cart</a>
-                </li>
-                <li>
-                    <a href="apps-ecommerce-checkout.html">Checkout</a>
-                </li>
-                <li>
-                    <a href="apps-ecommerce-sellers.html">Sellers</a>
-                </li>
+
             </ul>
         </div>
     </li>
