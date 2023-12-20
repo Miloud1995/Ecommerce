@@ -36,6 +36,8 @@
                         </button>
                     </form>
 
+
+
                     @if (Route::has('login'))
                         @auth
                             <li class="nav-item ">
@@ -52,6 +54,21 @@
                             </li>
                         @endauth
                     @endif
+
+                    <li>
+                        <form action="">
+                            <a href="" style="display: flex;position: relative">
+                                @if (Route::has('login'))
+                                    <span
+                                        style="position: absolute;top:-15px;right:-5px;background-color: red;border-radius: 50%;width:17px;height: 17px;text-align: center;padding-bottom:5px;color:white ">0</span>
+                                @else
+                                    <span
+                                        style="position: absolute;top:-15px;right:-5px;background-color: red;border-radius: 50%;width:17px;height: 17px;text-align: center;padding-bottom: 4px;color:white">0</span>
+                                @endif
+                                <img style="width: 40px;height: 40px;" src="/images/shopping_cart.png" alt="">
+                            </a>
+                        </form>
+                    </li>
                 </ul>
             </div>
         </nav>

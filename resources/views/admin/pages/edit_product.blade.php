@@ -1,11 +1,11 @@
 @extends('admin.pages.layout')
 
 @section('content')
-    <form action="{{ route('update_product') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('update_product', ['id' => $product->id]) }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
             <label for="title">Product Title</label>
-            <input type="text" class="form-control" id="title" name="title" value="{{ $product->title }}">
+            <input type="text" class="form-control" id="title"  name="title" value="{{ $product->title }}" >
         </div>
 
         <div class="form-group">
@@ -27,7 +27,7 @@
 
         <div class="form-group">
             <label for="discount_price">Discount Price</label>
-            <input type="number" class="form-control" id="descount_price" name="discount_price"
+            <input type="text" class="form-control" id="descount_price" name="discount_price"
                 value="{{ $product->discount_price }}">
         </div>
 
@@ -35,6 +35,9 @@
             <label for="category">Category</label>
             <select name="category" class="form-control">
                 <option value="{{ $product->category }}">{{ $product->category }}</option>
+                @foreach ($categories as $category)
+                    <option value="{{ $category->category_name }}">{{ $category->category_name }}</option>
+                @endforeach
             </select>
         </div>
         <div class="form-group">

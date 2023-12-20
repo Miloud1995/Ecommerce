@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Category;
 use App\Models\Product;
+use App\Models\Category;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -57,7 +58,9 @@ class AdminController extends Controller
     }
 
     public function add_product(){
-       return view('admin.pages.add_products');
+        $categories = Category::all();
+
+       return view('admin.pages.add_products',compact('categories'));
 
     }
     public function save_product(Request $request)
@@ -72,6 +75,10 @@ class AdminController extends Controller
         'discount_price' => 'required|numeric', // Corrected the field name
         'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
     ]);
+    if($request->category=="checked")
+    {
+        return redirect()->back()->with('message','you did not choose any category');
+    }
 
     $imageName = time() . '.' . $request->image->getClientOriginalExtension();
 
@@ -91,10 +98,67 @@ class AdminController extends Controller
    }
 
    public function edit_product($id){
+    $categories = Category::all();
+    $product = Product::find($id);
 
-    $product = Product::find($id)->get();
-
-    return view('admin.pages.edit_product',compact('product'));
+    return view('admin.pages.edit_product',compact('product','categories'));
 
    }
+   public function update_product(Request $request,$id){
+
+    $request->validate([
+        'title' => 'required',
+        'description' => 'required',
+        'category' => 'required',
+        'quantity' => 'required|numeric',
+        'price' => 'required|numeric',
+        'discount_price' => 'required|numeric', // Corrected the field name
+        'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+    ]);
+            if($request->category=="checked")
+            {
+                return redirect()->back()->with('message','you did not choose any category');
+            }
+            $product=Product::find($request->id);
+
+
+
+
+            $product->update([
+                'title' => $request->title,
+                'description' => $request->description,
+                'category' => $request->category,
+                'quantity' => $request->quantity,
+                'price' => $request->price,
+                'discount_price' => $request->discount_price,
+            ]);
+
+
+
+           if($request->hasFile('image')){
+            Storage::delete('product/' . $product->image);
+            $imageName = time() . '.' . $request->image->getClientOriginalExtension();
+
+            $request->image->move('product', $imageName);
+
+
+           }
+
+
+
+
+
+
+            return redirect()->route('show_product')->with('message', 'The product has been updated successfully');
+        }
+
+   public function delete_product($id){
+        $product = Product::find($id);
+        $product->delete();
+
+        return redirect()->back()->with('message','the product has been deleted seccussfuly');
+   }
+
+
+
 }

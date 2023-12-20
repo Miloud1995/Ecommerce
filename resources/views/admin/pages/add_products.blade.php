@@ -34,9 +34,22 @@
         <div class="form-group" style="display:flex;flex-direction: column">
             <label for="category">Category</label>
             <select name="category" class="form-control">
-                <option value="test">test</option>
+                <option value="checked">Choose the category</option>
+                @foreach ($categories as $category)
+                    <option value="{{ $category->category_name }}">{{ $category->category_name }}</option>
+                @endforeach
+
             </select>
         </div>
+
+        @if (session()->has('message'))
+            <div class="alert alert-danger">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x </button>
+                {{ session()->get('message') }}
+
+            </div>
+        @endif
+
 
         <div class="form-group">
             <label for="image">Image</label>

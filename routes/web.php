@@ -40,9 +40,18 @@ Route::middleware([
     Route::get('/add_product',[AdminController::class,'add_product'])->name('add_product');
     Route::post('/save_product',[AdminController::class,'save_product'])->name('save_product');
     Route::get('/edit_product/{id}',[AdminController::class,'edit_product'])->name('edit_product');
-    Route::post('/update_product',[AdminController::class,'update_product'])->name('update_product');
+    Route::post('/update_product{id}',[AdminController::class,'update_product'])->name('update_product');
     Route::post('/delete_product/{id}',[AdminController::class,'delete_product'])->name('delete_product');
 
+
+    Route::get('/add_cart/{id}',[HomeController::class,'add_cart'])->name('add_cart');
+
+
 });
+
+
+Route::get('/product_details/{id}',[HomeController::class,'product_details'])->name('product_details');
+
+
 
 

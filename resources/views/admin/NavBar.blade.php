@@ -12,46 +12,11 @@
                 </form>
             </div>
         </li>
-        <li class="dropdown notification-list topbar-dropdown">
-            <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#"
-                role="button" aria-haspopup="false" aria-expanded="false">
-                <img src="Admin/assets/images/flags/us.jpg" alt="user-image" class="me-0 me-sm-1"
-                    height="12">
-                <span class="align-middle d-none d-sm-inline-block">English</span> <i
-                    class="mdi mdi-chevron-down d-none d-sm-inline-block align-middle"></i>
-            </a>
-            <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu">
 
-                <!-- item-->
-                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                    <img src="Admin/assets/images/flags/germany.jpg" alt="user-image" class="me-1"
-                        height="12"> <span class="align-middle">German</span>
-                </a>
-
-                <!-- item-->
-                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                    <img src="Admin/assets/images/flags/italy.jpg" alt="user-image" class="me-1"
-                        height="12"> <span class="align-middle">Italian</span>
-                </a>
-
-                <!-- item-->
-                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                    <img src="Admin/assets/images/flags/spain.jpg" alt="user-image" class="me-1"
-                        height="12"> <span class="align-middle">Spanish</span>
-                </a>
-
-                <!-- item-->
-                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                    <img src="Admin/assets/images/flags/russia.jpg" alt="user-image" class="me-1"
-                        height="12"> <span class="align-middle">Russian</span>
-                </a>
-
-            </div>
-        </li>
 
         <li class="dropdown notification-list">
-            <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#"
-                role="button" aria-haspopup="false" aria-expanded="false">
+            <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button"
+                aria-haspopup="false" aria-expanded="false">
                 <i class="dripicons-bell noti-icon"></i>
                 <span class="noti-icon-badge"></span>
             </a>
@@ -136,8 +101,7 @@
                 </div>
 
                 <!-- All-->
-                <a href="javascript:void(0);"
-                    class="dropdown-item text-center text-primary notify-item notify-all">
+                <a href="javascript:void(0);" class="dropdown-item text-center text-primary notify-item notify-all">
                     View All
                 </a>
 
@@ -145,8 +109,8 @@
         </li>
 
         <li class="dropdown notification-list d-none d-sm-inline-block">
-            <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#"
-                role="button" aria-haspopup="false" aria-expanded="false">
+            <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button"
+                aria-haspopup="false" aria-expanded="false">
                 <i class="dripicons-view-apps noti-icon"></i>
             </a>
             <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated dropdown-lg p-0">
@@ -252,9 +216,8 @@
                     <!-- item-->
                     <a href="javascript:void(0);" class="dropdown-item notify-item">
                         <div class="d-flex">
-                            <img class="d-flex me-2 rounded-circle"
-                                src="Admin/assets/images/users/avatar-2.jpg" alt="Generic placeholder image"
-                                height="32">
+                            <img class="d-flex me-2 rounded-circle" src="Admin/assets/images/users/avatar-2.jpg"
+                                alt="Generic placeholder image" height="32">
                             <div class="w-100">
                                 <h5 class="m-0 font-14">Erwin Brown</h5>
                                 <span class="font-12 mb-0">UI Designer</span>
@@ -265,9 +228,8 @@
                     <!-- item-->
                     <a href="javascript:void(0);" class="dropdown-item notify-item">
                         <div class="d-flex">
-                            <img class="d-flex me-2 rounded-circle"
-                                src="Admin/assets/images/users/avatar-5.jpg" alt="Generic placeholder image"
-                                height="32">
+                            <img class="d-flex me-2 rounded-circle" src="Admin/assets/images/users/avatar-5.jpg"
+                                alt="Generic placeholder image" height="32">
                             <div class="w-100">
                                 <h5 class="m-0 font-14">Jacob Deo</h5>
                                 <span class="font-12 mb-0">Developer</span>

@@ -40,11 +40,17 @@
                             style="width: 70px;height: 70px;border-radius: 12px"></td>
                     <td style="display: flex;justify-content:space-evenly gap:20px center">
 
-                        <form action="{{ route('edit_product'), $product->id }}"><button class="btn btn-primary"
-                                type="submit" style="width: 90px;height:90p">Edit</button></form>
+                        <form action="{{ route('edit_product', ['id' => $product->id]) }}" method="get">
+                            <button class="btn btn-primary" type="submit" style="width: 90px;">Edit</button>
+                        </form>
 
-                        <form action="{{ route('delete_product'), $product->id }}"><button class="btn btn-danger"
-                                type="submit" style="width: 90px;margin-left: 20px">Delete</button></form>
+
+                        <form action="{{ route('delete_product', ['id' => $product->id]) }}" method="POST">
+                            @csrf
+                            <button class="btn btn-danger" type="submit"
+                                onclick="return confirm('are sure you want to delete this product ?')"
+                                style="width: 90px;margin-left: 20px">Delete</button>
+                        </form>
                     </td>
                 </tr>
             @endforeach
